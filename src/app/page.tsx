@@ -1,11 +1,13 @@
 import { DonationCard } from "@/components/home/DonationCard";
 import ListBox from "@/components/shared/Listbox";
+import Footer from "@/components/ui/Footer";
 import { BloodType ,governorate} from "@/data";
 
 export default function Home() {
 
   return (
-     <div className="max-w-7/12 mx-auto pt-10">
+    <>
+     <div className="max-w-7/12 mx-auto pt-10 mb-10">
           <div className=" mx-auto w-8/12 flex justify-between mb-10">
                <ListBox options={BloodType} label="Blood type"/>
                <ListBox options={governorate} label="governorate"/>
@@ -21,7 +23,8 @@ export default function Home() {
             <DonationCard/>
           </div>
          
-          
      </div>
+     <Footer/>
+    </>
   );
 }

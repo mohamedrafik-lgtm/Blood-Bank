@@ -1,4 +1,4 @@
-import { Option } from '@/interface/index'
+import { IRegisterData, Option } from '@/interface/index'
 export const BloodType: Option[] = [
     { id: 1, name: 'A+' },
     { id: 2, name: 'A-' },
@@ -38,3 +38,67 @@ export const governorate:Option[] = [
     { id: 25, name: 'Damietta' },
     { id: 26, name: 'Suez' }
   ];
+
+  export const RegisterData:IRegisterData[]=[
+   {
+    label:'username',
+    name:"name",
+    placeholder:"Enter name hear",
+    type:"text"
+   },
+   {
+    label:'Email',
+    name:"email",
+    placeholder:"Enter email hear",
+    type:"text"
+   },
+   {
+    label:'password',
+    name:"password",
+    placeholder:"Enter password hear",
+    type:"text"
+   },
+   {
+    label:'password confirmation',
+    name:"password_confirmation",
+    placeholder:"Enter password confirmation hear",
+    type:"text"
+   },
+   {
+    label:'phone',
+    name:"phone",
+    placeholder:"Enter phone hear",
+    type:"text"
+   },
+   {
+    label:'city id',
+    name:"city_id",
+    placeholder:"Enter city id hear",
+    type:"text"
+   },
+   {
+    label:'D O D',
+    name:"d_o_d",
+    placeholder:"Enter D O D hear",
+    type:"text"
+   },
+   {
+    label:'last donation date',
+    name:"last_donation_date",
+    placeholder:"Enter last donation date hear",
+    type:"text"
+   },
+   
+   {
+    label:'blood type id',
+    name:"blood_type_id",
+    placeholder:"Enter blood type id hear",
+    type:"text"
+   },
+   {
+    label:'governorate id',
+    name:"governorate_id",
+    placeholder:"Enter governorate id hear",
+    type:"text"
+   },
+  ]
