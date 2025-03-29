@@ -1,7 +1,9 @@
 "use client";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { JSX } from "react";
+import SettingsModal from "./Menu";
 
 interface LinkItem {
     href: string;
@@ -9,6 +11,21 @@ interface LinkItem {
 }
 
 export default function NavBar() {
+    const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setWidth(window.innerWidth);
+
+      const handleResize = () => setWidth(window.innerWidth);
+      window.addEventListener('resize', handleResize);
+
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
+  console.log(width)
+
+
     const pathname = usePathname();
     const isLogin = false;
 
@@ -62,7 +79,8 @@ export default function NavBar() {
 
     return (
        <header>
-           <nav className="py-6 px-5 flex bg-red-600 justify-around items-center">
+           <nav className={`py-6 flex bg-red-600  ${width > 850 ? "justify-around items-center px-5" : " px-2 justify-between "}`}>
+
                <Link href="/">
                <div className="flex cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="40" height="40">
@@ -76,26 +94,39 @@ export default function NavBar() {
                     <h1 className="text-white text-3xl font-semibold">Blood Bank</h1>
                </div>
                </Link>
+                 
 
-               <ul className="flex text-white text-2xl font-semibold min-w-4/12 justify-between">
-                   {links.map(({ href, icon }) => (
-                       <Link key={href} href={href}>
+     {
+        width > 850 ? (
+            <>
+                <ul className="flex text-white text-2xl font-semibold min-w-4/12 justify-between">
+                    {links.map(({ href, icon }) => (
+                        <Link key={href} href={href}>
                             <li className={`cursor-pointer pb-2 ${getIconClass(href)}`}>
                                 {icon}
                             </li>
-                       </Link>
-                   ))}
-               </ul>
+                        </Link>
+                    ))}
+                </ul>
+                {isLogin ? (
+                    <div>
+                        <button className="flex justify-center items-center">
+                            <span className="text-white text-2xl">Settings</span>
+                        </button>
+                    </div>
+                ) : (
+                    <Link href="/login"><span className="text-white text-2xl">Login</span></Link>   
+                )}
+            </>
+        ) : 
+        <div className="flex items-center">
+             <SettingsModal/>
+        </div>
+     }
+               
+              
+               
 
-               {isLogin ? (
-                   <div>
-                       <button className="flex justify-center items-center">
-                           <span className="text-white text-2xl">Settings</span>
-                       </button>
-                   </div>
-               ) : (
-                   <Link href="/login"><span className="text-white text-2xl">Login</span></Link>   
-               )}
            </nav>
        </header>
     );

@@ -1,5 +1,7 @@
-export const DonationCard = ()=>{
 
+
+export const DonationCard = ()=>{
+    
     return (
         <div className="px-5 py-3 border rounded-lg space-y-3">
         <div className=" flex justify-between">

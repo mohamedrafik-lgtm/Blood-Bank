@@ -56,13 +56,13 @@ export const governorate:Option[] = [
     label:'password',
     name:"password",
     placeholder:"Enter password hear",
-    type:"text"
+    type:"password"
    },
    {
     label:'password confirmation',
     name:"password_confirmation",
     placeholder:"Enter password confirmation hear",
-    type:"text"
+    type:"password"
    },
    {
     label:'phone',
@@ -102,3 +102,5 @@ export const governorate:Option[] = [
     type:"text"
    },
   ]
+
+  
